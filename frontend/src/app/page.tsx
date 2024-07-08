@@ -11,7 +11,7 @@ const homePageQuery = qs.stringify({
 });
 
 async function getStrapiData(path: string) {
-  const baseUrl = "http://localhost:1337";
+  const baseUrl = "http://localhost:1338";
   const url = new URL(path, baseUrl);
   url.search = homePageQuery;
 
@@ -27,7 +27,7 @@ async function getStrapiData(path: string) {
 export default async function Home() {
   const strapiData = await getStrapiData("/api/home-page");
   console.dir(strapiData, { depth: null });
-  const { Heading, SubHeading, Description } = strapiData.data.attributes;
+  const { Heading, SubHeading, Description } = strapiData?.data?.attributes;
 
   return (
     <main className="container mx-auto py-6">
