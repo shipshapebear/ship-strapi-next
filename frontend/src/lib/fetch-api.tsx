@@ -1,6 +1,5 @@
 import qs from "qs";
 import { getStrapiURL } from "./api-helpers";
-import { flattenAttributes } from "./utils";
 
 export async function fetchAPI(
   path: string,
@@ -10,7 +9,7 @@ export async function fetchAPI(
   try {
     // Merge default and user options
     const mergedOptions = {
-      next: { revalidate: 60 },
+      next: { revalidate: 0 },
       headers: {
         "Content-Type": "application/json",
       },
@@ -26,7 +25,7 @@ export async function fetchAPI(
     // Trigger API call
     const response = await fetch(requestUrl, mergedOptions);
     const data = await response.json();
-    return flattenAttributes(data);
+    return data;
   } catch (error) {
     console.error(error);
     throw new Error(
