@@ -4,6 +4,7 @@ export interface ComponentsLink extends Schema.Component {
   collectionName: 'components_components_links';
   info: {
     displayName: 'Link';
+    description: '';
   };
   attributes: {
     Url: Attribute.String;

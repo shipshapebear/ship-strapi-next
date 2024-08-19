@@ -26,6 +26,12 @@
     },
     "Description": {
       "type": "text"
+    },
+    "navigation": {
+      "type": "dynamiczone",
+      "components": [
+        "components.link"
+      ]
     }
   }
 }

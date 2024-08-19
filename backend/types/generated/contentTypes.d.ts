@@ -378,6 +378,7 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     Heading: Attribute.String;
     SubHeading: Attribute.String;
     Description: Attribute.Text;
+    navigation: Attribute.DynamicZone<['components.link']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

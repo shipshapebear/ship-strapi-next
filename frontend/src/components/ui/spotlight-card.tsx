@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import MousePosition from "@/lib/mouse-position";
+import { cn } from "@/lib/utils";
 
 type SpotlightProps = {
   children: React.ReactNode;
@@ -21,7 +22,9 @@ export default function Spotlight({
   useEffect(() => {
     containerRef.current &&
       setBoxes(
-        Array.from(containerRef.current.children).map((el) => el as HTMLElement)
+        Array.from(containerRef.current.children).map(
+          (el) => el as HTMLElement,
+        ),
       );
   }, []);
 
@@ -85,7 +88,10 @@ export function SpotlightCard({
 }: SpotlightCardProps) {
   return (
     <div
-      className={`relative h-full bg-slate-800 rounded-3xl p-px before:absolute before:w-80 before:h-80 before:-left-40 before:-top-40 before:bg-slate-400 before:rounded-full before:opacity-0 before:pointer-events-none before:transition-opacity before:duration-500 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:group-hover:opacity-100 before:z-10 before:blur-[100px] after:absolute after:w-96 after:h-96 after:-left-48 after:-top-48 after:bg-indigo-500 after:rounded-full after:opacity-0 after:pointer-events-none after:transition-opacity after:duration-500 after:translate-x-[var(--mouse-x)] after:translate-y-[var(--mouse-y)] after:hover:opacity-10 after:z-30 after:blur-[100px] overflow-hidden ${className}`}
+      className={cn(
+        "relative h-full overflow-hidden rounded-3xl bg-slate-800 p-px before:pointer-events-none before:absolute before:-left-40 before:-top-40 before:z-10 before:h-20 before:w-20 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:rounded-full before:bg-slate-400 before:opacity-0 before:blur-[100px] before:transition-opacity before:duration-500 after:pointer-events-none after:absolute after:-left-48 after:-top-48 after:z-30 after:h-96 after:w-96 after:translate-x-[var(--mouse-x)] after:translate-y-[var(--mouse-y)] after:rounded-full after:bg-indigo-500 after:opacity-0 after:blur-[100px] after:transition-opacity after:duration-500 after:hover:opacity-10 before:group-hover:opacity-100",
+        className,
+      )}
     >
       {children}
     </div>
