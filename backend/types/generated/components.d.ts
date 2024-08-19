@@ -14,6 +14,7 @@ export interface ComponentsExperienceItem extends Schema.Component {
     CompanyName: Attribute.String;
     Description: Attribute.Text;
     TechStacks: Attribute.Component<'components.stacks', true>;
+    CompanyImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 

@@ -4,7 +4,7 @@ export function getStrapiURL(path = "") {
   }${path}`;
 }
 
-export function getStrapiMedia(url: string | null) {
+export function getStrapiMedia(url: any) {
   if (url == null) {
     return null;
   }
@@ -22,8 +22,7 @@ export function formatDate(dateString: string) {
   const date = new Date(dateString);
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
-    month: "long",
-    day: "numeric",
+    month: "short",
   };
   return date.toLocaleDateString("en-US", options);
 }

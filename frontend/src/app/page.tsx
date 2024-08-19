@@ -4,6 +4,8 @@ import { fetchAPI } from "@/lib/fetch-api";
 import { flattenAttributes } from "@/lib/utils";
 import StaggeredFade from "@/components/animations/fade-in";
 import Spotlight, { SpotlightCard } from "@/components/ui/spotlight-card";
+import { getStrapiMedia } from "@/lib/api-helpers";
+import ProjectContent from "@/components/shared/ProjectContent";
 
 const homePageQuery = {
   populate: {
@@ -21,6 +23,9 @@ const homePageQuery = {
     },
     experienceItem: {
       populate: {
+        CompanyImage: {
+          populate: true,
+        },
         TechStacks: {
           populate: true,
         },
@@ -32,8 +37,6 @@ const homePageQuery = {
 export default async function Home() {
   const strapiData = await fetchAPI("/home-page", homePageQuery);
   const data = flattenAttributes(strapiData);
-
-  console.log(strapiData);
   const { Heading, SubHeading, Description } = data;
 
   return (
@@ -56,8 +59,8 @@ export default async function Home() {
           <p className="text-[20px] text-foreground">{Description}</p>
         </div>
       </section>
-      <section id="about" className="h-screen">
-        <Spotlight className="mx-auto mt-2 grid max-w-7xl grid-cols-3 place-content-center gap-4">
+      {/* <section id="about" className="h-screen">
+        <Spotlight className="mx-auto mt-2 grid max-w-7xl grid-cols-3 gap-4">
           {data.block.map((item: any) => (
             <SpotlightCard
               key={item.id}
@@ -67,8 +70,11 @@ export default async function Home() {
             </SpotlightCard>
           ))}
         </Spotlight>
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      </section>
+      </section> */}
+      <div className="h-screen">
+        <ProjectContent data={data} />
+        <pre>{JSON.stringify(strapiData, null, 2)}</pre>{" "}
+      </div>
     </>
   );
 }
