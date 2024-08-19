@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_components_stacks",
+  "info": {
+    "displayName": "Stacks",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

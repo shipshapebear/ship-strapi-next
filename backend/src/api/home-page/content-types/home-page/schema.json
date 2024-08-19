@@ -27,10 +27,26 @@
     "Description": {
       "type": "text"
     },
-    "navigation": {
+    "navigationItem": {
       "type": "dynamiczone",
       "components": [
         "components.link"
+      ]
+    },
+    "Contact": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.contact-section"
+    },
+    "Experience": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.experience-section"
+    },
+    "experienceItem": {
+      "type": "dynamiczone",
+      "components": [
+        "components.experience-item"
       ]
     }
   }

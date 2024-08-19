@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_layout_experience_sections",
+  "info": {
+    "displayName": "Experience Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "text"
+    }
+  }
+}

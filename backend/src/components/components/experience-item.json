@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_components_experience_items",
+  "info": {
+    "displayName": "Experience Item",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "DateStarted": {
+      "type": "date"
+    },
+    "DateFinished": {
+      "type": "date"
+    },
+    "IsCurrent": {
+      "type": "boolean",
+      "default": false
+    },
+    "Position": {
+      "type": "string"
+    },
+    "CompanyName": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "TechStacks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.stacks"
+    }
+  }
+}

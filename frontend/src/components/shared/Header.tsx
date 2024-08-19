@@ -5,7 +5,7 @@ import React from "react";
 
 const homePageQuery = {
   populate: {
-    navigation: {
+    navigationItem: {
       populate: true,
     },
   },
@@ -15,12 +15,12 @@ async function Header() {
   const res = await fetchAPI("/home-page", homePageQuery);
   const data = flattenAttributes(res);
   return (
-    <nav className="sticky top-0">
-      <div className="mx-auto flex h-[40px] gap-x-4">
-        {data?.navigation?.map((link: any) => (
-          <Link key={link.id} href={link.Url}>
+    <nav className="sticky top-0 z-10 flex h-[var(--header-height)] items-center justify-center">
+      <div className="flex gap-x-4 rounded-md border border-card bg-card bg-opacity-50 p-4 shadow-md">
+        {data?.navigationItem?.map((link: any) => (
+          <a key={link.id} href={link.Url}>
             {link.Text}
-          </Link>
+          </a>
         ))}
       </div>
     </nav>

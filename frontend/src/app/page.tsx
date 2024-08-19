@@ -10,8 +10,21 @@ const homePageQuery = {
     block: {
       populate: true,
     },
-    navigation: {
+    navigationItem: {
       populate: true,
+    },
+    Contact: {
+      populate: true,
+    },
+    Experience: {
+      populate: true,
+    },
+    experienceItem: {
+      populate: {
+        TechStacks: {
+          populate: true,
+        },
+      },
     },
   },
 };
@@ -20,11 +33,15 @@ export default async function Home() {
   const strapiData = await fetchAPI("/home-page", homePageQuery);
   const data = flattenAttributes(strapiData);
 
+  console.log(strapiData);
   const { Heading, SubHeading, Description } = data;
 
   return (
     <>
-      <div className="relative flex items-center justify-center">
+      <section
+        id="home"
+        className="relative -mt-[var(--header-height)] flex items-center justify-center"
+      >
         <div className="h-screen w-screen overflow-hidden bg-background">
           <BackgroundGrid />
         </div>
@@ -38,7 +55,7 @@ export default async function Home() {
           </h2>
           <p className="text-[20px] text-foreground">{Description}</p>
         </div>
-      </div>
+      </section>
       <section id="about" className="h-screen">
         <Spotlight className="mx-auto mt-2 grid max-w-7xl grid-cols-3 place-content-center gap-4">
           {data.block.map((item: any) => (
