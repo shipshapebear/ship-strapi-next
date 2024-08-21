@@ -16,7 +16,7 @@ const ProjectContent = ({ data }: any) => {
 
   let component = useRef<HTMLDivElement>(null);
   let container = useRef<HTMLDivElement>(null);
-  let textSectionRef = useRef<HTMLDivElement>([]);
+  let textSectionRef = useRef<HTMLDivElement[]>([]);
 
   type Container = {
     container: number;
@@ -59,9 +59,9 @@ const ProjectContent = ({ data }: any) => {
   };
 
   useEffect(() => {
-    const ctx = gsap.context((self) => {
+    const ctx = gsap.context((self: any) => {
       const textBoxs = self.selector(".text-section");
-      textBoxs.forEach((box, index) => {
+      textBoxs.forEach((box: any, index: any) => {
         const isLastChild = index === textSectionRef.current?.length - 1;
         gsap.to(box, {
           scrollTrigger: {
@@ -87,8 +87,9 @@ const ProjectContent = ({ data }: any) => {
     return () => ctx.revert();
   }, [lenis]);
 
-  const sortedItems: any = data.experienceItem.sort(
-    (a: any, b: any) => new Date(b.DateFinished) - new Date(a.DateFinished),
+  const sortedItems = data.experienceItem.sort(
+    (a: any, b: any) =>
+      new Date(b.DateFinished).getTime() - new Date(a.DateFinished).getTime(),
   );
 
   return (
@@ -101,7 +102,7 @@ const ProjectContent = ({ data }: any) => {
         <div className="relative col-span-6 hidden w-full lg:block">
           <AnimatePresence>
             <div className="pin-spacer">
-              {sortedItems.map((exp, index) => {
+              {sortedItems.map((exp: any, index: number) => {
                 const image = getStrapiMedia(exp.CompanyImage.url);
                 return (
                   <div
@@ -136,7 +137,7 @@ const ProjectContent = ({ data }: any) => {
         </div>
 
         <div className="col-span-6" ref={container}>
-          {sortedItems.map((exp, index) => {
+          {sortedItems.map((exp: any, index: number) => {
             const image = getStrapiMedia(exp.CompanyImage.url);
             return (
               <div
