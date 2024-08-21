@@ -10,7 +10,7 @@ import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ProjectContent = ({ data }) => {
+const ProjectContent = ({ data }: any) => {
   const { width } = useWindowSize();
   const lenis = useLenis();
 
