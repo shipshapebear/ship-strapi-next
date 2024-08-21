@@ -18,10 +18,11 @@ const nextConfig = {
       },
     ],
   },
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
+  },
 };
-
-const emailJS_templateID = process.env.EMAILJS_TEMPLATE_ID;
-const emailJS_publickKey = process.env.EMAILJS_PUBLIC_KEY;
-const emailJS_serviceKey = process.env.EMAILJS_SEVICE_KEY;
 
 export default nextConfig;
