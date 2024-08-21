@@ -6,6 +6,11 @@ import StaggeredFade from "@/components/animations/fade-in";
 import Spotlight, { SpotlightCard } from "@/components/ui/spotlight-card";
 import { getStrapiMedia } from "@/lib/api-helpers";
 import ProjectContent from "@/components/shared/ProjectContent";
+import { ContactForm } from "@/components/shared/ContactForm";
+import Footer from "@/components/shared/Footer";
+import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
+import Image1 from "../../public/Image1.png";
 
 const homePageQuery = {
   populate: {
@@ -71,9 +76,60 @@ export default async function Home() {
           ))}
         </Spotlight>
       </section> */}
-      <div className="h-screen">
+      <div className="min-h-screen">
         <ProjectContent data={data} />
-        <pre>{JSON.stringify(strapiData, null, 2)}</pre>{" "}
+        <section
+          id="contact"
+          className="mx-auto flex max-w-3xl flex-1 flex-col gap-x-4 px-10"
+        >
+          <div className="mb-4 flex flex-col items-center justify-center">
+            <h1 className="text-2xl font-bold text-foreground">
+              {data.Contact.Title}
+            </h1>
+            <p>{data.Contact.Description}</p>
+          </div>
+          <ContactForm data={data} />
+        </section>
+        {/* <pre>{JSON.stringify(data, null, 2)}</pre>{" "} */}
+
+        <div className="mx-auto flex w-full max-w-7xl gap-6">
+          <div className="flex w-full flex-col gap-2">
+            <Card className="h-[400px]">
+              <CardContent className="relative h-full overflow-hidden p-4">
+                <div className="">
+                  <h1 className="text-xl font-bold">Item 1</h1>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Praesentium, adipisci. Explicabo, error maxime! Maiores esse
+                    sapiente fugit natus atque consectetur, et, dolore omnis
+                    suscipit tenetur rerum, numquam aspernatur possimus soluta!
+                  </p>
+                  <Image
+                    src={Image1}
+                    alt="test"
+                    width={1920}
+                    height={1080}
+                    className="absolute bottom-0 left-0 w-full scale-95 object-cover"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="h-[200px]">
+              <CardContent></CardContent>
+            </Card>
+          </div>
+          <div className="flex w-full flex-col-reverse gap-2">
+            <Card className="h-[400px]">
+              <CardContent></CardContent>
+            </Card>
+            <Card className="h-[200px]">
+              <CardContent></CardContent>
+            </Card>
+          </div>
+        </div>
+        <footer className="footer mt-40 flex h-[400px] items-center justify-center border-t-2 border-t-card bg-background">
+          Copyright 2024 Aaron Jay
+        </footer>
       </div>
     </>
   );

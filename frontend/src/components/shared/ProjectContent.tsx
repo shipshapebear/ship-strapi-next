@@ -151,7 +151,9 @@ const ProjectContent = ({ data }) => {
                 <div className="py-0 lg:absolute lg:inset-0 lg:py-4">
                   <div className="relative mt-6 flex h-full flex-col justify-center overflow-hidden rounded-2xl px-4 py-12 font-[12vw] md:px-12 lg:mt-0 lg:py-4">
                     <div className="mb-2 flex justify-between">
-                      <p className="text-sm font-semibold text-foreground/50">{`${formatDate(exp.DateStarted)} - ${exp.IsCurrent ? "Present" : formatDate(exp.DateFinished)} `}</p>
+                      <div>
+                        <p className="items-end text-sm font-semibold text-foreground/50">{`${formatDate(exp.DateStarted)} - ${exp.IsCurrent ? "Present" : formatDate(exp.DateFinished)} `}</p>
+                      </div>
                       <p className="text-sm font-bold">{exp.Position}</p>
                     </div>
                     {exp.Description}
@@ -170,10 +172,6 @@ const ProjectContent = ({ data }) => {
             );
           })}
         </div>
-      </div>
-      <div className="h-screen">
-        {" "}
-        <pre>{JSON.stringify(data.experienceItem, null, 2)}</pre>
       </div>
     </section>
   );
