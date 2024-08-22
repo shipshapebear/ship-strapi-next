@@ -11,6 +11,7 @@ import Footer from "@/components/shared/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Image1 from "../../public/Image1.png";
+import Header from "@/components/shared/Header";
 
 const homePageQuery = {
   populate: {
@@ -46,6 +47,7 @@ export default async function Home() {
 
   return (
     <>
+      <Header data={data} />
       <section
         id="home"
         className="relative -mt-[var(--header-height)] flex items-center justify-center"
@@ -59,9 +61,9 @@ export default async function Home() {
             {data && <StaggeredFade sentence={Heading} />}
           </div>
           <h2 className="text-[40px] font-semibold leading-tight tracking-tight">
-            {SubHeading}
+            {data && SubHeading}
           </h2>
-          <p className="text-[20px] text-foreground">{Description}</p>
+          <p className="text-[20px] text-foreground">{data && Description}</p>
         </div>
       </section>
       {/* <section id="about" className="h-screen">
@@ -77,18 +79,18 @@ export default async function Home() {
         </Spotlight>
       </section> */}
       <div className="min-h-screen">
-        <ProjectContent data={data} />
+        <ProjectContent data={!!data && data} />
         <section
           id="contact"
           className="mx-auto flex max-w-3xl flex-1 flex-col gap-x-4 px-10"
         >
           <div className="mb-4 flex flex-col items-center justify-center">
             <h1 className="text-2xl font-bold text-foreground">
-              {data.Contact.Title}
+              {data?.Contact?.Title}
             </h1>
-            <p>{data.Contact.Description}</p>
+            <p>{data?.Contact?.Description}</p>
           </div>
-          <ContactForm data={data} />
+          <ContactForm data={data && data} />
         </section>
         {/* <pre>{JSON.stringify(data, null, 2)}</pre>{" "} */}
 

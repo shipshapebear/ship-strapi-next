@@ -5,6 +5,7 @@ import Header from "@/components/shared/Header";
 import Lenis from "./lenis";
 import Footer from "@/components/shared/Footer";
 import { Toaster } from "@/components/ui/toaster";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
         <Lenis>{children}</Lenis>
         <Toaster />
         {/* <Footer /> */}

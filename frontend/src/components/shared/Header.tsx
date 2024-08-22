@@ -1,28 +1,56 @@
-import { fetchAPI } from "@/lib/fetch-api";
-import { flattenAttributes } from "@/lib/utils";
-import Link from "next/link";
-import React from "react";
+"use client";
+import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
-const homePageQuery = {
-  populate: {
-    navigationItem: {
-      populate: true,
-    },
-  },
-};
+function Header({ data }: any) {
+  const [hash, setHash] = useState("/");
+  const router = useRouter();
+  const pathname = usePathname();
 
-async function Header() {
-  const res = await fetchAPI("/home-page", homePageQuery);
-  const data = flattenAttributes(res);
+  useEffect(() => {
+    const handleHashChange = () => {
+      setHash(window.location.hash);
+    };
+
+    // Get the initial hash on component mount
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", handleHashChange);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, [router]);
+
+  console.log(pathname);
+
   return (
     <nav className="sticky top-0 z-10 flex h-[var(--header-height)] items-center justify-center">
-      <div className="flex gap-x-4 rounded-md border border-card bg-card bg-opacity-50 p-4 shadow-md">
+      <ul className="flex gap-x-4 rounded-md border border-card bg-card bg-opacity-50 p-1.5 shadow-md">
         {data?.navigationItem?.map((link: any) => (
-          <a key={link.id} href={link.Url}>
-            {link.Text}
-          </a>
+          <li
+            className={
+              "text-foregroun relative flex items-center justify-center px-2 py-1"
+            }
+            key={link.id}
+          >
+            <a href={link.Url} className="z-10">
+              {link.Text}
+            </a>
+            {hash == link.Url && (
+              <motion.div
+                className="absolute bottom-0 left-0 right-0 top-0 z-[0] h-full w-full rounded-sm bg-muted"
+                layoutId="underline"
+              />
+            )}
+          </li>
         ))}
-      </div>
+      </ul>
     </nav>
   );
 }
