@@ -12,7 +12,8 @@ import Image from "next/image";
 import Image1 from "../../public/Image1.png";
 import Header from "@/components/shared/Header";
 import Experiences from "@/components/shared/Experiences";
-import Testimonials from "@/components/shared/Testimonials2";
+import TestimonialsDesktop from "@/components/shared/TestimonialsDesktop";
+import TestimonialsMobile from "@/components/shared/TestimonialsMobile";
 
 const homePageQuery = {
   populate: {
@@ -143,14 +144,20 @@ export default async function Home() {
           </div>
         </div> */}
 
-        {/* <section id="testimonials" className="mx-auto mt-10 w-full max-w-7xl">
+        <section
+          id="testimonials"
+          className="mx-auto mt-10 block w-full max-w-7xl md:hidden"
+        >
           <div className="px-4">
-            <Testimonials data={data.testimonialItem} />
+            <TestimonialsMobile data={data.testimonialItem} />
           </div>
-        </section> */}
-        <section id="testimonials" className="mx-auto mt-10 w-full max-w-7xl">
+        </section>
+        <section
+          id="testimonials"
+          className="mx-auto mt-10 hidden w-full max-w-7xl md:block"
+        >
           <div className="testimonial-grid space-y-4 px-4">
-            <Testimonials data={data.testimonialItem} />
+            <TestimonialsDesktop data={data.testimonialItem} />
           </div>
         </section>
         <footer className="footer mt-40 flex h-[400px] items-center justify-center border-t-2 border-t-card bg-background">

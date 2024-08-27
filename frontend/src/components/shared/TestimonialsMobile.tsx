@@ -3,6 +3,7 @@ import React from "react";
 import {
   Carousel,
   CarouselContent,
+  CarouselDots,
   CarouselItem,
 } from "@/components/ui/carousel";
 import { CardContent, Card } from "@/components/ui/card";
@@ -10,14 +11,12 @@ import DangerousHtmlComponent from "../ui/dangerous";
 import Image from "next/image";
 import { cn, getStrapiMedia } from "@/lib/utils";
 
-function Testimonials({ data }: any) {
-  console.log(data);
-
+function TestimonialsMobile({ data }: any) {
   const imageStyle = "w-[54px] h-[54px] aspect-square rounded-full";
 
   return (
     <Carousel
-      className="w-full"
+      className="relative w-full"
       opts={{
         align: "start",
       }}
@@ -67,8 +66,9 @@ function Testimonials({ data }: any) {
           );
         })}
       </CarouselContent>
+      <CarouselDots className="mt-5" />
     </Carousel>
   );
 }
 
-export default Testimonials;
+export default TestimonialsMobile;

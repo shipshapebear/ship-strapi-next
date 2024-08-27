@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import DangerousHtmlComponent from "@/components/ui/dangerous";
 import Image from "next/image";
 
-function Testimonials({ data }: any) {
+function TestimonialsDesktop({ data }: any) {
   const imageStyle = "w-[54px] h-[54px] aspect-square rounded-full";
 
   return (
@@ -51,4 +51,4 @@ function Testimonials({ data }: any) {
   );
 }
 
-export default Testimonials;
+export default TestimonialsDesktop;
