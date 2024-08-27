@@ -10,7 +10,7 @@ import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ProjectContent = ({ data }: any) => {
+const Experiences = ({ data }: any) => {
   const { width } = useWindowSize();
   const lenis = useLenis();
 
@@ -87,14 +87,16 @@ const ProjectContent = ({ data }: any) => {
     return () => ctx.revert();
   }, [lenis]);
 
-  const sortedItems = data.experienceItem.sort(
+  const sortedItems = data?.experienceItem.sort(
     (a: any, b: any) =>
       new Date(b.DateFinished).getTime() - new Date(a.DateFinished).getTime(),
   );
 
   return (
     <section id="about" className="mt-20 scroll-m-[2rem] lg:scroll-m-[300px]">
-      <h2 className="mb-5 text-center text-slate-50">My Projects</h2>
+      <h2 className="mb-5 text-center text-slate-50">
+        {data?.Experience?.Title}
+      </h2>
       <div
         className="mx-auto grid max-w-screen-xl grid-cols-1 items-start gap-4 px-4 lg:grid-cols-12 lg:px-12 2xl:gap-6"
         ref={component}
@@ -178,4 +180,4 @@ const ProjectContent = ({ data }: any) => {
   );
 };
 
-export default ProjectContent;
+export default Experiences;

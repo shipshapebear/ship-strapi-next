@@ -43,6 +43,22 @@ export interface ComponentsStacks extends Schema.Component {
   };
 }
 
+export interface ComponentsTestimonialItem extends Schema.Component {
+  collectionName: 'components_components_testimonial_items';
+  info: {
+    displayName: 'Testimonial Item';
+    description: '';
+  };
+  attributes: {
+    Name: Attribute.String;
+    Position: Attribute.String;
+    Company: Attribute.String;
+    CompanyUrl: Attribute.Component<'components.link'>;
+    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Testimony: Attribute.RichText;
+  };
+}
+
 export interface LayoutContactSection extends Schema.Component {
   collectionName: 'components_layout_contact_sections';
   info: {
@@ -85,15 +101,28 @@ export interface LayoutHeroSection extends Schema.Component {
   };
 }
 
+export interface LayoutTestimonialSection extends Schema.Component {
+  collectionName: 'components_layout_testimonial_sections';
+  info: {
+    displayName: 'Testimonial Section';
+  };
+  attributes: {
+    Title: Attribute.String;
+    Description: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'components.experience-item': ComponentsExperienceItem;
       'components.link': ComponentsLink;
       'components.stacks': ComponentsStacks;
+      'components.testimonial-item': ComponentsTestimonialItem;
       'layout.contact-section': LayoutContactSection;
       'layout.experience-section': LayoutExperienceSection;
       'layout.hero-section': LayoutHeroSection;
+      'layout.testimonial-section': LayoutTestimonialSection;
     }
   }
 }

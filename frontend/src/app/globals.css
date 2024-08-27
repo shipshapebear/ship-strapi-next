@@ -79,9 +79,23 @@
   --header-height: 110px;
 }
 
+html,
+body {
+  font-size: 14px;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.testimonial-grid {
+  -moz-column-count: 3;
+  column-count: 3;
+  -moz-column-fill: initial;
+  column-fill: initial;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
 }

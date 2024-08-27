@@ -1,14 +1,11 @@
 "use client";
-import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 function Header({ data }: any) {
   const [hash, setHash] = useState("/");
   const router = useRouter();
-  const pathname = usePathname();
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -26,8 +23,6 @@ function Header({ data }: any) {
       window.removeEventListener("hashchange", handleHashChange);
     };
   }, [router]);
-
-  console.log(pathname);
 
   return (
     <nav className="sticky top-0 z-10 flex h-[var(--header-height)] items-center justify-center">

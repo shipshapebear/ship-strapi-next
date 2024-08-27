@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_layout_testimonial_sections",
+  "info": {
+    "displayName": "Testimonial Section"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    }
+  }
+}

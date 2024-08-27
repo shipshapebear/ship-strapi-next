@@ -382,6 +382,8 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     Contact: Attribute.Component<'layout.contact-section'>;
     Experience: Attribute.Component<'layout.experience-section'>;
     experienceItem: Attribute.DynamicZone<['components.experience-item']>;
+    Testimony: Attribute.Component<'layout.testimonial-section'>;
+    testimonialItem: Attribute.DynamicZone<['components.testimonial-item']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

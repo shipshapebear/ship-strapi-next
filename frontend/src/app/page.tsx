@@ -5,13 +5,14 @@ import { flattenAttributes } from "@/lib/utils";
 import StaggeredFade from "@/components/animations/fade-in";
 import Spotlight, { SpotlightCard } from "@/components/ui/spotlight-card";
 import { getStrapiMedia } from "@/lib/api-helpers";
-import ProjectContent from "@/components/shared/ProjectContent";
 import { ContactForm } from "@/components/shared/ContactForm";
 import Footer from "@/components/shared/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Image1 from "../../public/Image1.png";
 import Header from "@/components/shared/Header";
+import Experiences from "@/components/shared/Experiences";
+import Testimonials from "@/components/shared/Testimonials2";
 
 const homePageQuery = {
   populate: {
@@ -33,6 +34,19 @@ const homePageQuery = {
           populate: true,
         },
         TechStacks: {
+          populate: true,
+        },
+      },
+    },
+    Testimony: {
+      populate: true,
+    },
+    testimonialItem: {
+      populate: {
+        Image: {
+          populate: true,
+        },
+        CompanyUrl: {
           populate: true,
         },
       },
@@ -79,7 +93,7 @@ export default async function Home() {
         </Spotlight>
       </section> */}
       <div className="min-h-screen">
-        <ProjectContent data={!!data && data} />
+        <Experiences data={!!data && data} />
         <section
           id="contact"
           className="mx-auto flex max-w-3xl flex-1 flex-col gap-x-4 px-10"
@@ -93,8 +107,7 @@ export default async function Home() {
           <ContactForm data={data && data} />
         </section>
         {/* <pre>{JSON.stringify(data, null, 2)}</pre>{" "} */}
-
-        <div className="mx-auto flex w-full max-w-7xl gap-6">
+        {/* <div className="mx-auto flex w-full max-w-7xl gap-6">
           <div className="flex w-full flex-col gap-2">
             <Card className="h-[400px]">
               <CardContent className="relative h-full overflow-hidden p-4">
@@ -128,7 +141,18 @@ export default async function Home() {
               <CardContent></CardContent>
             </Card>
           </div>
-        </div>
+        </div> */}
+
+        {/* <section id="testimonials" className="mx-auto mt-10 w-full max-w-7xl">
+          <div className="px-4">
+            <Testimonials data={data.testimonialItem} />
+          </div>
+        </section> */}
+        <section id="testimonials" className="mx-auto mt-10 w-full max-w-7xl">
+          <div className="testimonial-grid space-y-4 px-4">
+            <Testimonials data={data.testimonialItem} />
+          </div>
+        </section>
         <footer className="footer mt-40 flex h-[400px] items-center justify-center border-t-2 border-t-card bg-background">
           Copyright 2024 Aaron Jay
         </footer>
